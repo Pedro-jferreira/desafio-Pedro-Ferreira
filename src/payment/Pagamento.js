@@ -1,19 +1,19 @@
 class Pagamento {
   constructor() {
-    this.formasDePagamento = ["dinheiro", "credito", "debito"];
-    this.descontoDinheiro = 0.05;
-    this.acrescimoCredito = 0.03;
+    this.paymentOptions = ["dinheiro", "credito", "debito"];
+    this.cashDiscount = 0.05;
+    this.creditIncrease = 0.03;
   }
 
-  validarFormaPagamento(metodoDePagamento) {
-    return this.formasDePagamento.includes(metodoDePagamento);
+  validatePaymentMethod(PaymentMethod) {
+    return this.paymentOptions.includes(PaymentMethod);
   }
 
-  calcularTotalComDescontoOuAcrescimo(total, metodoDePagamento) {
-    if (metodoDePagamento === "dinheiro") {
-      return total * (1 - this.descontoDinheiro);
-    } else if (metodoDePagamento === "credito") {
-      return total * (1 + this.acrescimoCredito);
+  calculateModifiedTotal(total, PaymentMethod) {
+    if (PaymentMethod === "dinheiro") {
+      return total * (1 - this.cashDiscount);
+    } else if (PaymentMethod === "credito") {
+      return total * (1 + this.creditIncrease);
     }
     return total;
   }
